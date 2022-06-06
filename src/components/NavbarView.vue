@@ -13,9 +13,20 @@
             </v-btn>
         </v-app-bar>
         <v-navigation-drawer v-model="drawer" app class="primary">
-        <p1 class="info">
-            Khang
-        </p1>
+        <v-list shaped>
+                <v-list-item-group>
+                    <v-list-item
+                        v-for="link in links" :key="link.text"
+                        router :to="link.route">
+                        <v-list-item-icon>
+                            <v-icon class="white--text" v-text="link.icon"></v-icon>
+                        </v-list-item-icon>
+                        <v-list-item-content>
+                            <v-list-item-title class="white--text" v-text="link.text"></v-list-item-title>
+                        </v-list-item-content>
+                    </v-list-item>
+                </v-list-item-group>
+            </v-list>
         </v-navigation-drawer>
     </nav>
 </template>
@@ -27,6 +38,11 @@ export default {
     data(){
         return {
             drawer: false,
+            links: [
+                {icon: 'mdi-view-dashboard', text: 'Dashboard', route: '/'},
+                {icon: 'mdi-folder', text: 'My Projects', route: '/projects'},
+                {icon: 'mdi-account', text: 'Team', route: '/team'},
+            ]
         }
     }
 }
