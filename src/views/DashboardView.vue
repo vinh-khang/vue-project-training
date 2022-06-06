@@ -3,14 +3,24 @@
     <div class="subheading grey--text ma-5">Dashboard</div>
     <v-container class="my-5">
        <v-layout row class="mb-3">
-        <v-btn small outlined color="grey" @click="sortBy('title')" class="btn-folder">
-          <v-icon left small >mdi-folder</v-icon>
-          <span class="caption text-lowercase">By project name</span>
-        </v-btn>
-        <v-btn small outlined color="grey" @click="sortBy('person')" class="btn-folder">
-          <v-icon left small >mdi-account</v-icon>
-          <span class="caption text-lowercase">By person</span>
-        </v-btn>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs" v-on="on" small outlined color="grey" @click="sortBy('title')" class="btn-folder">
+              <v-icon left small >mdi-folder</v-icon>
+              <span class="caption text-lowercase">By project name</span>
+            </v-btn>
+          </template>
+          <span>Sort projects by project name</span>
+        </v-tooltip>
+        <v-tooltip top>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn v-bind="attrs" v-on="on" small outlined color="grey" @click="sortBy('person')" class="btn-folder">
+              <v-icon left small >mdi-account</v-icon>
+              <span class="caption text-lowercase">By person</span>
+            </v-btn>
+          </template>
+          <span>Sort projects by person</span>
+        </v-tooltip>
       </v-layout>
       <v-card class="white pa-3 mb-1" v-for="project in projects" :key="project.title">
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
