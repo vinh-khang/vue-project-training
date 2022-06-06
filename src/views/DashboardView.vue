@@ -2,6 +2,16 @@
   <div class="home">
     <div class="subheading grey--text ma-5">Dashboard</div>
     <v-container class="my-5">
+       <v-layout row class="mb-3">
+        <v-btn small outlined color="grey" @click="sortBy('title')" class="btn-folder">
+          <v-icon left small >mdi-folder</v-icon>
+          <span class="caption text-lowercase">By project name</span>
+        </v-btn>
+        <v-btn small outlined color="grey" @click="sortBy('person')" class="btn-folder">
+          <v-icon left small >mdi-account</v-icon>
+          <span class="caption text-lowercase">By person</span>
+        </v-btn>
+      </v-layout>
       <v-card class="white pa-3 mb-1" v-for="project in projects" :key="project.title">
         <v-layout row wrap :class="`pa-3 project ${project.status}`">
           <v-flex xs12 md6>
@@ -40,6 +50,12 @@
         ]
       }
     }
+    ,
+    methods: {
+      sortBy(prop){
+        this.projects.sort((a,b) => a[prop] < b[prop] ? -1: 1)
+      }
+    }
   }
 </script>
 <style>
@@ -61,5 +77,11 @@
 }
 .v-chip.overdue{
   background: #f83e70 !important;
+}
+.v-chip.overdue{
+  background: #f83e70 !important;
+}
+.btn-folder {
+  border: none;
 }
 </style>
