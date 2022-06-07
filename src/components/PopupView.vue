@@ -22,7 +22,7 @@
             <v-form class="px-3">
                 <v-text-field label="Title" v-model="title" prepend-icon="mdi-folder"></v-text-field>
                 <v-textarea label="Information" v-model="content" prepend-icon="mdi-pencil"></v-textarea>
-                <v-btn text class="success mx-0 mt-3" @click="submit">Add project</v-btn>
+                <v-btn text class="info mx-0 mt-3" @click="submit">Add project</v-btn>
             </v-form>
         </v-card-text>
       </v-card>
