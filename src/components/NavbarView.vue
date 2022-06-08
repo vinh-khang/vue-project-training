@@ -12,8 +12,8 @@
                 <v-icon right>mdi-exit-to-app</v-icon>
             </v-btn>
         </v-app-bar>
-        <v-navigation-drawer v-model="drawer" app class="pink">
-        <p1>
+        <v-navigation-drawer v-model="drawer" app class="primary">
+        <p1 class="info">
             Khang
         </p1>
         </v-navigation-drawer>
