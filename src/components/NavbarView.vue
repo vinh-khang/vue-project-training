@@ -13,6 +13,16 @@
             </v-btn>
         </v-app-bar>
         <v-navigation-drawer v-model="drawer" app class="primary">
+        <v-row>
+            <v-col class="mt-5 text-center">
+                <v-avatar size="100">
+                <img src="/avatar-1.png" alt="" />
+                </v-avatar>
+                <p class="white--text text-subtitle-1 mt-1">
+                Nguyen Vĩnh Khang
+                </p>
+            </v-col>
+            </v-row>
         <v-list shaped>
                 <v-list-item-group>
                     <v-list-item
