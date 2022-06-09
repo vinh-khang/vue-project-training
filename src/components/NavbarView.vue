@@ -36,8 +36,9 @@
                 <p class="white--text text-subtitle-1 mt-1">
                 Nguyen Vĩnh Khang
                 </p>
+                    <PopupView text/>
             </v-col>
-            </v-row>
+        </v-row>
         <v-list shaped>
                 <v-list-item-group>
                     <v-list-item
@@ -57,9 +58,9 @@
 </template>
 
 <script>
-
+import PopupView from './PopupView.vue';
 export default {
-
+    components:{PopupView},
     data(){
         return {
             drawer: false,
