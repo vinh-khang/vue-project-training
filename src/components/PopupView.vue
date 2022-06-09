@@ -2,6 +2,7 @@
   <div class="text-center">
     <v-dialog
       width="600"
+      v-model="dialog"
     >
         <template v-slot:activator="{ on, attrs }">
             <v-btn
@@ -28,7 +29,7 @@
                     </template>
                     <v-date-picker v-model="due"></v-date-picker>
                 </v-menu>
-                <v-btn text class="info mx-0 mt-3" @click="submit">Add project</v-btn>
+                <v-btn text class="info mx-0 mt-3" @click="submit" :loading="loading">Add project</v-btn>
             </v-form>
         </v-card-text>
       </v-card>
@@ -48,12 +49,15 @@ export default {
             due: '',
             inputRules: [
                 v => v && v.length >= 3 || 'Minimum length is 3 characters'
-            ]
+            ],
+            loading: false,
+            dialog: false
         }
     },
     methods: {
         submit(){
              if(this.$refs.form.validate()){
+                this.loading = true;
                 const project = {
                     title: this.title,
                     content: this.content,
@@ -62,7 +66,9 @@ export default {
                     status: 'ongoing'
                 }
                 db.collection('projects').add(project).then(() => {
-                    console.log('added to db');
+                    this.loading = false;
+                    this.dialog = false;
+                    this.$refs.form.reset();
                 })
             }
         }
